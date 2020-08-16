@@ -1,20 +1,28 @@
 import web
+import mvc.model.model as alumnos
+
+model_alumno = alumnos.Alumnos()
+
 render=web.template.render('mvc/views/alumnos/')
 
 class Delete:
-    def GET(self):
+    def GET(self, id_persona):
         try:
-            data=web.input()
-            matricula=data['matricula']
-            name=data['name']
-            paterno=data['paterno']
-            materno=data['materno']
-            edad=data['edad']
-            fecha=data['fecha']
-            genero=data['genero']
-            state=data['state']
-            return render.delete(matricula,name,paterno,materno,edad,fecha,genero,state)
+            result=model_alumno.view(id_persona[0])
+            return render.delete(result)
         except Exception as e:
             result=[]    
             result.append('error'+ str(e.args))
+            return result
+
+    def POST(self, id_alumno):
+        try:
+            print("ingreso")
+            data=web.input()
+            id=int(data.id_alumno)
+            model_alumno.delete(id)
+            web.seeother('/list')
+        except Exception as e:
+            result=[]    
+            result.append('error delete'+ str(e.args))
             return result

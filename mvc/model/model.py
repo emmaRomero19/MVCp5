@@ -82,9 +82,21 @@ class Alumnos():
             return True
         except Exception as e:
             print("Error Insert: ", e)
-            result=[]
-            return result
-    
+            return False
+
+    def delete(self, id_persona):
+        try:
+            self.connect()
+            query=('DELETE FROM alumnos WHERE id_alumno = %s')
+            val_tupla=(id_persona, )
+            self.cursor.execute(query, val_tupla)
+            self.cnx.commit()
+            self.cursor.close()
+            self.cnx.close()
+            return True
+        except Exception as e:
+            print("Error Delete: ", e)
+            return False
 
 objeto=Alumnos()
 objeto.connect()

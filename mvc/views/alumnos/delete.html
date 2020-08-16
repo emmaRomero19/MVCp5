@@ -1,4 +1,4 @@
-$def with(matricula,name,paterno,materno,edad,fecha,genero,state)
+$def with(result)
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,10 +15,9 @@ $def with(matricula,name,paterno,materno,edad,fecha,genero,state)
           <div class="cell medium-3">       
           </div>
           <div class="cell medium-6">
-              <p><h5>MATRICULA</h5>
-                $if matricula:
-                  $matricula
-                $else:
+              <p><h5>MATRICULA</h5>               
+                $for row in result:
+                  <p>$row['matricula']</p>
                   
             </p>      
           </div>
@@ -31,9 +30,8 @@ $def with(matricula,name,paterno,materno,edad,fecha,genero,state)
           <div class="cell small-6 large-2" style="background-color: seashell;">
             <p>
               <h5>NAME </h5>
-                $if name:
-                  $name
-                $else:
+              $for row in result:
+                <p>$row['nombre']</p>
                   
             </p>
           </div>
@@ -41,9 +39,8 @@ $def with(matricula,name,paterno,materno,edad,fecha,genero,state)
           <div class="cell small-6 large-2" style="background-color:  seashell;">
             <p>
               <h5>SURNAME</h5>
-                $if paterno and materno:
-                  $paterno $materno
-                $else:
+              $for row in result:
+                <p>$row['ap_paterno'] $row['ap_materno']</p>
                   
             </p>
           </div>
@@ -51,9 +48,8 @@ $def with(matricula,name,paterno,materno,edad,fecha,genero,state)
           <div class="cell small-6 large-1" style="background-color:   seashell;">
             <p>
               <h5>AGE</h5>
-              $if edad:
-                $edad
-              $else:
+              $for row in result:
+                <p>$row['edad']</p>
                 
             </p>
           </div> 
@@ -61,35 +57,35 @@ $def with(matricula,name,paterno,materno,edad,fecha,genero,state)
           <div class="cell small-6 large-3" style="background-color:  seashell;">
             <p>
               <h5>BIRTHDAY</h5>
-                $if fecha:
-                  $fecha
-                $else:
-                
+              $for row in result:
+                <p>$row['fecha_nac']</p>
+
             </p>
           </div>
           <div class="cell small-6 large-2" style="background-color:  seashell;">
             <p>
               <h5>GENDER</h5>
-                $if genero:
-                  $genero
-                $else:
+              $for row in result:
+                <p>$row['genero']</p>
                 
             </p>
           </div>
           <div class="cell small-6 large-2" style="background-color:  seashell;">
             <p>
               <h5>STATE</h5>
-                $if state:
-                  $state
-                $else:
+              $for row in result:
+                <p>$row['estado']</p>
                 
             </p>          
           </div>
         </div>
       </div>
-      <a href="/list"class="button primary">Return</a>
-      <button type="SUBMIT" class="alert button">DELETE</button>
-
+      <form method="POST" action="">
+        $for row in result:
+          <input type="hidden" name="id_alumno" value="$row['id_persona']"/>
+          <a href="/list"class="button primary">Return</a>
+          <button type="SUBMIT" class="alert button">DELETE</button>
+      </form>
   </center>
 
 </body>
