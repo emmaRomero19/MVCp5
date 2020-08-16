@@ -70,11 +70,11 @@ $def with(result)
                 <fieldset class="large-5 cell">
                   <legend><h5>GENDER</h5></legend>
                   $if((row['genero'])=="femenino"):
-                    <input type="radio" name="genero" value="MUJER" id="MUJER" checked /><label for="MUJER">FEMENINO</label>
-                    <input type="radio" name="genero" value="HOMBRE" id="HOMBRE" /><label for="HOMBRE">MASCULINO</label>
-                  $else:
-                  <input type="radio" name="genero" value="MUJER" id="MUJER"/><label for="MUJER">FEMENINO</label>
-                  <input type="radio" name="genero" value="HOMBRE" id="HOMBRE" checked/><label for="HOMBRE">MASCULINO</label>
+                    <input type="radio" name="genero" value="femenino" id="MUJER" checked /><label for="MUJER">FEMENINO</label>
+                    <input type="radio" name="genero" value="masculino" id="HOMBRE" /><label for="HOMBRE">MASCULINO</label>
+                  $if((row['genero'])=="masculino"):
+                  <input type="radio" name="genero" value="femenino" id="MUJER"/><label for="MUJER">FEMENINO</label>
+                  <input type="radio" name="genero" value="masculino" id="HOMBRE" checked/><label for="HOMBRE">MASCULINO</label>
                 </fieldset>
               </label>
             </div>
