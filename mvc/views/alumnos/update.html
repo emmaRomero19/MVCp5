@@ -1,3 +1,4 @@
+$def with(result)
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -10,86 +11,92 @@
   
   <center>
     <form method="POST" action="">
-      <div class="grid-container grid-padding-x">
-        <div class="grid-x grid-padding-x">
-          <div class="cell medium-3" style="background-color:  seashell;">       
-          </div>
-          <div class="cell medium-6" style="background-color:  seashell;">
-            <label>
-              <h5>MATRICULA</h5>
-              <input type="number" placeholder="MATRICULA" required>
-            </label>          
-          </div>
-          <div class="cell medium-3" style="background-color:  seashell;">
-          </div>
-        </div>
-
-        <div class="grid-x grid-padding-x">
-          
-          <div class="cell small-6 large-4" style="background-color: seashell;">
-            <label>
-              <h5>NAME </h5>
-              <input type="text" placeholder="NAME"  required/>
-            </label>
-          </div>
-
-          <div class="cell small-6 large-4" style="background-color:  seashell;">
-            <label>
-              <h5>SURNAME</h5>
-              <input type="text" placeholder="PATERNAL SURNAME" required/>
-            </label>
-          </div>
-
-          <div class="cell small-6 large-4" style="background-color:  seashell;">
-            <label>
-              <h5 style="color:seashell;">.</h5>
-              <input type="text" placeholder="MATERNAL SURNAME" required/>
-            </label>
-          </div>
-          
-          <div class="cell small-6 large-3" style="background-color:   seashell;">
-            <label>
-              <h5>AGE</h5>
-              <input type="NUMBER" placeholder="AGE" required/>
-            </label>
-          </div> 
-          
-          <div class="cell small-6" style="background-color:  seashell;">
-            <label>
-              <h5>BIRTHDAY</h5>
-            </label>
-            <div class="grid-x grid-padding-x">
-                <input type="date" required/>
+      $for row in result:
+        <div class="grid-container grid-padding-x">
+          <div class="grid-x grid-padding-x">
+            <div class="cell medium-3" style="background-color:  seashell;">       
+            </div>
+            <div class="cell medium-6" style="background-color:  seashell;">
+              <label>
+                <input type="hidden" name="id_alumno" value="$row['id_persona']">
+                <h5>MATRICULA</h5>
+                <input type="number" placeholder="MATRICULA"  value="$row['matricula']" name="matricula"/>
+              </label>          
+            </div>
+            <div class="cell medium-3" style="background-color:  seashell;">
             </div>
           </div>
-          <div class="cell small-6 large-3" style="background-color:  seashell;">
-            <label>
-              <fieldset class="large-5 cell">
-                <legend><h5>GENDER</h5></legend>
-                  <input type="radio" name="GENERO" value="MUJER" id="MUJER" required/><label for="MUJER">FEMENINO</label>
-                  <input type="radio" name="GENERO" value="HOMBRE" id="HOMBRE" required/><label for="HOMBRE">MASCULINO</label>
-              </fieldset>
-            </label>
+
+          <div class="grid-x grid-padding-x">
+            
+            <div class="cell small-6 large-4" style="background-color: seashell;">
+              <label>
+                <h5>NAME </h5>
+                <input type="text" placeholder="NAME" name="name" value="$row['nombre']" />
+              </label>
+            </div>
+
+            <div class="cell small-6 large-4" style="background-color:  seashell;">
+              <label>
+                <h5>SURNAME</h5>
+                <input type="text" placeholder="PATERNAL SURNAME" name="paterno" value="$row['ap_paterno']" />
+              </label>
+            </div>
+
+            <div class="cell small-6 large-4" style="background-color:  seashell;">
+              <label>
+                <h5 style="color:seashell;">.</h5>
+                <input type="text" placeholder="MATERNAL SURNAME" name="materno" value="$row['ap_materno']" />
+              </label>
+            </div>
+            
+            <div class="cell small-6 large-3" style="background-color:   seashell;">
+              <label>
+                <h5>AGE</h5>
+                <input type="NUMBER" placeholder="AGE"  name="edad" value="$row['edad']" />
+              </label>
+            </div> 
+            
+            <div class="cell small-6" style="background-color:  seashell;">
+              <label>
+                <h5>BIRTHDAY</h5>
+              </label>
+              <div class="grid-x grid-padding-x">
+                  <input type="date" name="fecha" value="$row['fecha_nac']"/>
+              </div>
+            </div>
+            <div class="cell small-6 large-3" style="background-color:  seashell;">
+              <label>
+                <fieldset class="large-5 cell">
+                  <legend><h5>GENDER</h5></legend>
+                  $if((row['genero'])=="femenino"):
+                    <input type="radio" name="genero" value="MUJER" id="MUJER" checked /><label for="MUJER">FEMENINO</label>
+                    <input type="radio" name="genero" value="HOMBRE" id="HOMBRE" /><label for="HOMBRE">MASCULINO</label>
+                  $else:
+                  <input type="radio" name="genero" value="MUJER" id="MUJER"/><label for="MUJER">FEMENINO</label>
+                  <input type="radio" name="genero" value="HOMBRE" id="HOMBRE" checked/><label for="HOMBRE">MASCULINO</label>
+                </fieldset>
+              </label>
+            </div>
           </div>
+          <div class="grid-x grid-padding-x">
+            <div class="cell medium-3" style="background-color:  seashell;">
+            </div>
+
+            <div class="cell medium-6" style="background-color:  seashell;">
+              <label>
+                <h5>STATE</h5>
+                <input type="text" placeholder="ESTADO" name="estado" value="$row['estado']"/>
+              </label>          
+            </div>
+            <div class="cell medium-3" style="background-color:  seashell;">
+            </div>
+
+          </div>
+          <a href="/list"class="button primary">Return</a>
+          <button type="SUBMIT" class="success button">Save</button>
+
         </div>
-        <div class="grid-x grid-padding-x">
-          <div class="cell medium-3" style="background-color:  seashell;">
-          </div>
-
-          <div class="cell medium-6" style="background-color:  seashell;">
-            <label>
-              <h5>STATE</h5>
-              <input type="text" placeholder="ESTADO" required/>
-            </label>          
-          </div>
-          <div class="cell medium-3" style="background-color:  seashell;">
-          </div>
-
-        </div>
-        <a href="/list"class="button primary">Return</a>
-        <button type="SUBMIT" class="success button">Save</button>
-
-      </div>
 
     
     </form>
