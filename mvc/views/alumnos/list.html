@@ -1,0 +1,51 @@
+$def with(result)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/foundation.css" />
+    <title>MVC | List</title>
+</head>
+<body>
+    <center>
+        <h3>WELCOME TO THE LIST!</h3>
+    </center>
+    <a class="button expanded success" href="/insert">INSERT DATA</a>
+    <table class="hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>MATRICULA</th>
+                <th>NAME</th>
+                <th>FISRT SURNAME</th>
+                <th>SECOND SURNAME</th>
+                <th>AGE</th>
+                <th>BIRTHDAY</th>
+                <th>GENDER</th>
+                <th>STATE</th>
+                <th style="color: red;">DELETE</th>
+                <th style="color: rgb(255, 147, 47);">UPDATE</th>
+                <th>VIEW</th>
+            </tr>
+          </thead>
+          <tbody>
+            $for row in result:
+                <tr>
+                    <td>$row['id_persona']</td>
+                    <td>$row['matricula']</td>
+                    <td>$row['nombre']</td>
+                    <td>$row['ap_paterno']</td>
+                    <td>$row['ap_materno']</td>
+                    <td>$row['edad']</td>
+                    <td>$row['fecha_nac']</td>
+                    <td>$row['genero']</td>
+                    <td>$row['estado']</td>
+
+                    <td> <a class="button small expanded" style="background-color:rgb(255, 201, 201); color: red;" href="">DELETE</a></td>
+                    <td> <a class="button small expanded" style="background-color: rgb(255, 224, 195); color: rgb(255, 123, 0);" href="/update" type="submit">UPDATE</a></td>
+                    <td> <a class="button small expanded" style="background-color: rgb(255, 247, 0); color: rgb(0, 0, 0);" href="/view/$row['id_persona']">VIEW</a></td>            
+                </tr>
+          </tbody>
+    </table>
+</body>
+</html>

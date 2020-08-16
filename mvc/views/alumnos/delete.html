@@ -1,0 +1,97 @@
+$def with(matricula,name,paterno,materno,edad,fecha,genero,state)
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/css/foundation.css" />
+</head>
+
+<body  style="background-color:  seashell;">
+  
+  <center><h1>DELETE DATA</h1></center>
+  
+  <center>
+      <div class="grid-container grid-padding-x">
+        <div class="grid-x grid-padding-x">
+          <div class="cell medium-3">       
+          </div>
+          <div class="cell medium-6">
+              <p><h5>MATRICULA</h5>
+                $if matricula:
+                  $matricula
+                $else:
+                  
+            </p>      
+          </div>
+          <div class="cell medium-3" style="background-color:  seashell;">
+          </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+          
+          <div class="cell small-6 large-2" style="background-color: seashell;">
+            <p>
+              <h5>NAME </h5>
+                $if name:
+                  $name
+                $else:
+                  
+            </p>
+          </div>
+
+          <div class="cell small-6 large-2" style="background-color:  seashell;">
+            <p>
+              <h5>SURNAME</h5>
+                $if paterno and materno:
+                  $paterno $materno
+                $else:
+                  
+            </p>
+          </div>
+
+          <div class="cell small-6 large-1" style="background-color:   seashell;">
+            <p>
+              <h5>AGE</h5>
+              $if edad:
+                $edad
+              $else:
+                
+            </p>
+          </div> 
+          
+          <div class="cell small-6 large-3" style="background-color:  seashell;">
+            <p>
+              <h5>BIRTHDAY</h5>
+                $if fecha:
+                  $fecha
+                $else:
+                
+            </p>
+          </div>
+          <div class="cell small-6 large-2" style="background-color:  seashell;">
+            <p>
+              <h5>GENDER</h5>
+                $if genero:
+                  $genero
+                $else:
+                
+            </p>
+          </div>
+          <div class="cell small-6 large-2" style="background-color:  seashell;">
+            <p>
+              <h5>STATE</h5>
+                $if state:
+                  $state
+                $else:
+                
+            </p>          
+          </div>
+        </div>
+      </div>
+      <a href="/list"class="button primary">Return</a>
+      <button type="SUBMIT" class="alert button">DELETE</button>
+
+  </center>
+
+</body>
+
+</html>

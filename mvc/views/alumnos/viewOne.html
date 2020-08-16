@@ -1,0 +1,82 @@
+$def with(result)
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" media="screen" href="../static/css/foundation.css" />
+</head>
+
+<body  style="background-color:  seashell;">
+  
+  <center><h1>ALUMNO</h1></center>
+  
+  <center>
+      <div class="grid-container grid-padding-x">
+        <div class="grid-x grid-padding-x">
+          <div class="cell medium-3">       
+          </div>
+          <div class="cell medium-6">
+              <p><h5>MATRICULA</h5>                  
+              $for row in result:
+                <p>$row['matricula']</p>
+            </p>      
+          </div>
+          <div class="cell medium-3" style="background-color:  seashell;">
+          </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+          
+          <div class="cell small-6 large-2" style="background-color: seashell;">
+            <p>
+              <h5>NAME </h5>
+              $for row in result:
+                <p>$row['nombre']</p>
+            </p>
+          </div>
+
+          <div class="cell small-6 large-2" style="background-color:  seashell;">
+            <p>
+              <h5>SURNAME</h5>
+              $for row in result:
+                <p>$row['ap_paterno'] $row['ap_materno']</p>
+            </p>
+          </div>
+
+          <div class="cell small-6 large-1" style="background-color:   seashell;">
+            <p>
+              <h5>AGE</h5>
+              $for row in result:
+                <p>$row['edad']</p>
+            </p>
+          </div> 
+          
+          <div class="cell small-6 large-3" style="background-color:  seashell;">
+            <p>
+              <h5>BIRTHDAY</h5>
+              $for row in result:
+                <p>$row['fecha_nac']</p>
+            </p>
+          </div>
+          <div class="cell small-6 large-2" style="background-color:  seashell;">
+            <p>
+              <h5>GENDER</h5>
+              $for row in result:
+                <p>$row['genero']</p>
+            </p>
+          </div>
+          <div class="cell small-6 large-2" style="background-color:  seashell;">
+            <p>
+              <h5>STATE</h5>
+              $for row in result:
+                <p>$row['estado']</p>
+
+            </p>          
+          </div>
+        </div>
+      </div>
+      <a href="/list" class="button success">Return</a>
+  </center>
+
+</body>
+
+</html>
