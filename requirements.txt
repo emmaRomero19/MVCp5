@@ -1,0 +1,7 @@
+cheroot==8.4.4
+jaraco.functools==2.0
+more-itertools==7.2.0
+mysql-connector-python==8.0.21
+protobuf==3.13.0
+six==1.15.0
+web.py==0.60
